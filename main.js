@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 $('button').on('click', function(){
 	var todoText = $('.form-control').val();
-	if (todoText !== '') {
+	if (/\S/.test(todoText)) {
 	$('input').val(""); 
 	$('ul').append('<li>' + '<input type="checkbox" class="checkbox">' + '<span class="text">' + todoText + '</span>' + '<span class="remove">&#10008;</span>' + '</li>');
 	};
@@ -15,12 +15,11 @@ $('button').on('click', function(){
 
 $('.form-control').keypress(function(event){
 	var addTaskKey = $('.form-control').val();
-	if((event.which === 13)&&(addTaskKey !=='')){
+	if((event.which === 13)&&(/\S/.test(addTaskKey))){
 		$('.form-control').val("");
 		$('ul').append('<li>' + '<input type="checkbox" class="checkbox">' + '<span class="text">' + addTaskKey + '</span>'  + '<span class="remove">&#10008;</span>' +  '</li>');
 	}
 });
-
 
 
   $('ul').on('click', ".remove" , function(event){ 
